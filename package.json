@@ -1,0 +1,30 @@
+{
+  "name": "gqlgram",
+  "version": "0.0.0",
+  "description": "Hello Expo!",
+  "author": null,
+  "main": "main.js",
+  "scripts": {
+    "test": "node node_modules/jest/bin/jest.js"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "@expo/ex-navigation": "~2.9.2",
+    "@expo/samples": "~1.0.3",
+    "apollo-client": "^1.0.2",
+    "date-fns": "^1.28.2",
+    "expo": "^15.0.2",
+    "faker": "^4.1.0",
+    "graphql-tag": "^2.0.0",
+    "jwt-decode": "^2.2.0",
+    "react": "~15.4.0",
+    "react-apollo": "^1.0.0",
+    "react-native": "https://github.com/exponent/react-native/archive/sdk-15.0.0.tar.gz",
+    "react-native-infinite-scroll-view": "^0.4.2"
+  },
+  "devDependencies": {
+    "jest-expo": "~0.3.0"
+  }
+}
