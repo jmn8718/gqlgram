@@ -35,7 +35,7 @@ export default class CameraScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Button
-          title="Pick an image from camera roll"
+          title="Take a Picture"
           onPress={this._pickImage}
         />
         {image &&

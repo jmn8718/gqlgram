@@ -7,7 +7,8 @@ import {
 } from 'react-native';
 import Layout from '../../constants/Layout';
 import { getTimeInWords } from '../../utilities/date';
-
+import { FontAwesome } from '@expo/vector-icons';
+import Colors from '../../constants/Colors';
 const imageStyle = { width: Layout.window.width, height: Layout.window.width };
 
 export default function({ data }) {
@@ -20,7 +21,30 @@ export default function({ data }) {
       <Image source={{ uri: data.image }} style={imageStyle} resizeMethod="auto" />
       <View style={styles.cardFooter}>
         <View style={styles.cardFooterActions}>
-          <Text style={styles.cardFooterTimeStamp}>{data.timestamp}</Text>
+          <View style={styles.cardFooterActionsMain}>
+            <FontAwesome
+              name={data.liked ? 'heart' : 'heart-o'}
+              size={24}
+              color={data.liked ? Colors.iconLiked : Colors.iconDefault}
+            />
+            <FontAwesome
+              name="comment-o"
+              size={24}
+              color={Colors.iconDefault}
+              style={{ paddingLeft: 16 }}
+            />
+            <FontAwesome
+              name="send-o"
+              size={24}
+              color={Colors.iconDefault}
+              style={{ paddingLeft: 16 }}
+            />
+          </View>
+          <FontAwesome
+            name="bookmark-o"
+            size={24}
+            color={Colors.iconDefault}
+          />
         </View>
         <View style={styles.cardFooterInformation}>
           <Text><Text style={styles.textUsername}>{data.username}</Text> {data.post}</Text>
@@ -61,7 +85,12 @@ const styles = StyleSheet.create({
   cardFooterActions: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: '#acacac',
-    paddingBottom: 16,
+    paddingBottom: 8,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  cardFooterActionsMain: {
+    flexDirection: 'row',
   },
   cardFooterInformation: {
     paddingTop: 8,

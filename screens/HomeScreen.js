@@ -22,6 +22,7 @@ const generateData = () => {
         dataUri: faker.image.dataUri(),
         timestamp: faker.date.recent().toString(),
         post: faker.lorem.paragraph(),
+        liked: faker.random.boolean(),
       }
     )
   }

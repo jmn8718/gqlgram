@@ -3,11 +3,9 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View, AsyncStorage } from 'react-native';
 import { NavigationProvider, StackNavigation } from '@expo/ex-navigation';
 import { FontAwesome } from '@expo/vector-icons';
-import { ApolloProvider } from 'react-apollo';
 
 import Router from './navigation/Router';
 import cacheAssetsAsync from './utilities/cacheAssetsAsync';
-import { client } from './apolloClient';
 
 class AppContainer extends React.Component {
   state = {
@@ -74,20 +72,18 @@ class AppContainer extends React.Component {
   render() {
     if (this.state.appIsReady) {
       return (
-        <ApolloProvider client={client}>
-          <View style={StyleSheet.absoluteFill}>
-            <NavigationProvider router={Router}>
-              <StackNavigation
-                id="root"
-                initialRoute={Router.getRoute('rootNavigation')}
-                logout={() => {}}
-              />
-            </NavigationProvider>
-            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-            {Platform.OS === 'android' &&
-              <View style={styles.statusBarUnderlay} />}
-          </View>
-        </ApolloProvider>
+        <View style={StyleSheet.absoluteFill}>
+          <NavigationProvider router={Router}>
+            <StackNavigation
+              id="root"
+              initialRoute={Router.getRoute('rootNavigation')}
+              logout={() => {}}
+            />
+          </NavigationProvider>
+          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          {Platform.OS === 'android' &&
+            <View style={styles.statusBarUnderlay} />}
+        </View>
       );
     } else {
       return <Expo.AppLoading />;
